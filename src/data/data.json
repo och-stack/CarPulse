@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "name": "Front Camera",
+        "image": "/carcam.png",
+        "status": "Online"
+    },
+    {
+        "id": 2,
+        "name": "Rear Camera",
+        "image": "/carcam.png",
+        "status": "Online"
+    },
+    {
+        "id": 3,
+        "name": "Car Alarm",
+        "image": "/caralarm.png",
+        "status": "Online"
+    },
+    {
+        "id": 4,
+        "name": "Central Lock",
+        "image": "/centrallock.png",
+        "status": "Offline"
+    },
+    {
+        "id": 5,
+        "name": "TPMS",
+        "image": "/tpms.png",
+        "status": "Online"
+    }
+]
