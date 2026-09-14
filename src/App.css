@@ -1,0 +1,195 @@
+:root {
+    --dark-bg: rgba(15, 23, 42, 0.95);
+    --dark-bg-login: rgba(15, 23, 42, 0.9);
+    --overlay: rgba(0, 0, 0, 0.55);
+
+    --white: white;
+    --white-soft: rgba(255, 255, 255, 0.7);
+    --border-light: rgba(255, 255, 255, 0.2);
+}
+
+/* Common background */
+
+.app-background {
+    min-height: 100vh;
+    background-image: url("/background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.app-overlay {
+    min-height: 100vh;
+    background-color: var(--overlay);
+}
+
+.white-text {
+    color: var(--white);
+}
+
+/* Navbar */
+
+.brand {
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.brand-logo {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+}
+
+/* Dashboard */
+
+.dashboard-container {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.dashboard-header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+}
+
+.device-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 260px);
+    gap: 24px;
+    justify-content: center;
+}
+
+.device-card {
+    width: 260px;
+    min-height: 280px;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: var(--dark-bg);
+    border: 1px solid var(--border-light);
+}
+
+.device-image {
+    height: 120px;
+    object-fit: contain;
+}
+
+.device-title {
+    color: var(--white);
+    font-size: 20px;
+}
+
+.no-results {
+    color: var(--white);
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* Login */
+
+.login-overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-circle {
+    width: 450px;
+    height: 450px;
+    border-radius: 50%;
+    background-color: var(--dark-bg-login);
+    color: var(--white);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-content {
+    width: 300px;
+    text-align: center;
+}
+
+.login-header {
+    margin-bottom: 24px;
+}
+
+.login-field {
+    margin-bottom: 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.password-field {
+    margin-bottom: 24px;
+}
+
+.login-label {
+    color: var(--white);
+    width: 80px;
+    text-align: left;
+}
+
+.login-input {
+    width: 180px;
+}
+
+.login-button {
+    width: 150px;
+}
+
+.login-hint {
+    color: var(--white-soft);
+    font-size: 12px;
+    margin-top: 8px;
+    margin-bottom: 0;
+}
+
+/* Error page */
+
+.error-page {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 40px;
+}
+
+.error-content {
+    margin: 0;
+    max-width: 500px;
+}
+
+.error-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.error-copy {
+    margin-bottom: 5px;
+}
+
+.error-button {
+    margin-top: 10px;
+}
+
+.error-logo {
+    width: 180px;
+    height: 180px;
+    object-fit: contain;
+}

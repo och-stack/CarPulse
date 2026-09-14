@@ -7,7 +7,6 @@ import devices from "../data/data.json";
 
 function Dashboard() {
     const [filter, setFilter] = useState("all");
-
     const { setIsLoggedIn } = useContext(AuthContext);
     const navigate = useNavigate();
 
@@ -17,61 +16,22 @@ function Dashboard() {
     }
 
     const filteredDevices = devices.filter((device) => {
-        if (filter === "all") {
-            return true;
-        }
-
-        if (filter === "alert") {
-            return device.alert === true;
-        }
-
+        if (filter === "all") return true;
+        if (filter === "alert") return device.alert === true;
         return device.status.toLowerCase() === filter;
     });
 
     return (
-        <div
-            style={{
-                minHeight: "100vh",
-                backgroundImage: "url('/background.jpg')",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                backgroundAttachment: "fixed"
-            }}
-        >
-            <div
-                style={{
-                    minHeight: "100vh",
-                    backgroundColor: "rgba(0, 0, 0, 0.55)"
-                }}
-            >
+        <div className="app-background">
+            <div className="app-overlay">
                 {/* Navbar */}
-                <Navbar
-                    expand="lg"
-                    bg="dark"
-                    variant="dark"
-                    className="px-4"
-                >
+                <Navbar expand="lg" bg="dark" variant="dark" className="px-4">
                     <Container>
                         <Navbar.Brand
                             onClick={() => navigate("/dashboard")}
-                            style={{
-                                cursor: "pointer",
-                                fontWeight: "bold",
-                                display: "flex",
-                                alignItems: "center",
-                                gap: "8px"
-                            }}
+                            className="brand"
                         >
-                            <img
-                                src="/icarpulse.png"
-                                alt="iCarPulse"
-                                style={{
-                                    width: "35px",
-                                    height: "35px",
-                                    objectFit: "contain"
-                                }}
-                            />
-
+                            <img src="/icarpulse.png" alt="iCarPulse" className="brand-logo" />
                             iCarPulse
                         </Navbar.Brand>
 
@@ -79,10 +39,7 @@ function Dashboard() {
 
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="ms-auto">
-                                <Button
-                                    variant="outline-light"
-                                    onClick={handleLogout}
-                                >
+                                <Button variant="outline-light" onClick={handleLogout}>
                                     Logout
                                 </Button>
                             </Nav>
@@ -91,118 +48,37 @@ function Dashboard() {
                 </Navbar>
 
                 {/* Dashboard Content */}
-                <Container
-                    style={{
-                        paddingTop: "40px",
-                        paddingBottom: "40px"
-                    }}
-                >
+                <Container className="dashboard-container">
                     {/* Header */}
-                    <div
-                        className="mb-4"
-                        style={{
-                            textAlign: "center"
-                        }}
-                    >
-                        <h1 style={{ color: "white" }}>
-                            iCarPulse
-                        </h1>
-
-                        <p style={{ color: "white" }}>
-                            Monitor your vehicle at a glance
-                        </p>
+                    <div className="dashboard-header">
+                        <h1 className="white-text">iCarPulse</h1>
+                        <p className="white-text">Monitor your vehicle at a glance</p>
                     </div>
 
                     {/* Filter Buttons */}
-                    <div
-                        className="mb-4"
-                        style={{
-                            display: "flex",
-                            justifyContent: "center",
-                            gap: "10px",
-                            flexWrap: "wrap"
-                        }}
-                    >
-                        <Button
-                            variant="primary"
-                            onClick={() => setFilter("all")}
-                        >
-                            All
-                        </Button>
-
-                        <Button
-                            variant="success"
-                            onClick={() => setFilter("online")}
-                        >
-                            Online
-                        </Button>
-
-                        <Button
-                            variant="secondary"
-                            onClick={() => setFilter("offline")}
-                        >
-                            Offline
-                        </Button>
-
-                        <Button
-                            variant="danger"
-                            onClick={() => setFilter("alert")}
-                        >
-                            Alert
-                        </Button>
+                    <div className="filter-buttons">
+                        <Button variant="primary" onClick={() => setFilter("all")}>All</Button>
+                        <Button variant="success" onClick={() => setFilter("online")}>Online</Button>
+                        <Button variant="secondary" onClick={() => setFilter("offline")}>Offline</Button>
+                        <Button variant="danger" onClick={() => setFilter("alert")}>Alert</Button>
                     </div>
 
                     {/* Device Cards */}
-                    <div
-                        style={{
-                            display: "grid",
-                            gridTemplateColumns: "repeat(3, 260px)",
-                            gap: "24px",
-                            justifyContent: "center"
-                        }}
-                    >
+                    <div className="device-grid">
                         {filteredDevices.map((device) => (
-                            <Card
-                                key={device.id}
-                                style={{
-                                    width: "260px",
-                                    minHeight: "280px",
-                                    borderRadius: "20px",
-                                    overflow: "hidden",
-                                    backgroundColor:
-                                        "rgba(15, 23, 42, 0.95)",
-                                    border:
-                                        "1px solid rgba(255, 255, 255, 0.2)"
-                                }}
-                            >
-                                <Card.Img
-                                    src={device.image}
-                                    alt={device.name}
-                                    style={{
-                                        height: "120px",
-                                        objectFit: "contain"
-                                    }}
-                                />
+                            <Card key={device.id} className="device-card">
+                                <Card.Img src={device.image} alt={device.name} className="device-image" />
 
                                 <Card.Body>
-                                    <Card.Title
-                                        style={{
-                                            color: "white",
-                                            fontSize: "20px"
-                                        }}
-                                    >
+                                    <Card.Title className="device-title">
                                         {device.name}
                                     </Card.Title>
 
                                     {/* Status */}
-                                    <p style={{ color: "white" }}>
+                                    <p className="white-text">
                                         Status:{" "}
                                         <Button
-                                            variant={
-                                                device.status === "Online"
-                                                    ? "success"
-                                                    : "secondary"
-                                            }
+                                            variant={device.status === "Online" ? "success" : "secondary"}
                                             size="sm"
                                         >
                                             {device.status}
@@ -210,19 +86,13 @@ function Dashboard() {
                                     </p>
 
                                     {/* Alert */}
-                                    <p style={{ color: "white" }}>
+                                    <p className="white-text">
                                         Alert:{" "}
                                         <Button
-                                            variant={
-                                                device.alert
-                                                    ? "danger"
-                                                    : "secondary"
-                                            }
+                                            variant={device.alert ? "danger" : "secondary"}
                                             size="sm"
                                         >
-                                            {device.alert
-                                                ? "Alert detected"
-                                                : "No alert"}
+                                            {device.alert ? "Alert detected" : "No alert"}
                                         </Button>
                                     </p>
                                 </Card.Body>
@@ -232,15 +102,7 @@ function Dashboard() {
 
                     {/* No Results */}
                     {filteredDevices.length === 0 && (
-                        <p
-                            style={{
-                                color: "white",
-                                textAlign: "center",
-                                marginTop: "30px"
-                            }}
-                        >
-                            No devices found for this filter.
-                        </p>
+                        <p className="no-results">No devices found for this filter.</p>
                     )}
                 </Container>
             </div>

@@ -1,6 +1,13 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
 
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate
+} from "react-router-dom";
+
 import { AuthProvider } from "./components/AuthContext";
 
 import Login from "./pages/Login";
@@ -12,10 +19,17 @@ function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
+
         <Routes>
+
           <Route
             path="/"
-            element={<Navigate to="/login" replace />}
+            element={
+              <Navigate
+                to="/login"
+                replace
+              />
+            }
           />
 
           <Route
@@ -36,7 +50,9 @@ function App() {
             path="*"
             element={<ErrorPage />}
           />
+
         </Routes>
+
       </AuthProvider>
     </BrowserRouter>
   );
