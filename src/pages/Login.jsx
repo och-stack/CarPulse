@@ -5,7 +5,7 @@ function Login() {
 
     return (
         <div>
-            <h1>eGuard Login</h1>
+            <h1>iCarPulse Login</h1>
 
             <button onClick={() => navigate("/dashboard")}>
                 Go to Dashboard
