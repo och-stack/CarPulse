@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { AuthContext } from "../components/AuthContext";
+import users from "../data/user.json";
 
 function Login() {
     const [email, setEmail] = useState("");
@@ -13,7 +14,11 @@ function Login() {
     function handleLogin(e) {
         e.preventDefault();
 
-        if (email === "john@mail.com" && password === "admin") {
+        const user = users.find(
+            (user) => user.email === email && user.password === password
+        );
+
+        if (user) {
             setIsLoggedIn(true);
             navigate("/dashboard");
         } else {
@@ -64,10 +69,7 @@ function Login() {
                             </div>
 
                             {/* Login Button */}
-                            <button
-                                type="submit"
-                                className="btn btn-primary login-button"
-                            >
+                            <button type="submit" className="btn btn-primary login-button">
                                 Login
                             </button>
 
