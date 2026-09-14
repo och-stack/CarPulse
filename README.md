@@ -1,16 +1,37 @@
-# React + Vite
+# iCarPulse
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A smart vehicle monitoring dashboard built with React and React Bootstrap.
 
-Currently, two official plugins are available:
+iCarPulse allows users to quickly view their vehicle device status, alerts, and monitoring settings from one dashboard.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## React Compiler
+Image 1: This is the login page.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Expanding the ESLint configuration
+Image 2: This is the dashboard.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Features
+
+- User login authentication
+- Admin and Guest user roles
+- Protected Dashboard route
+- React Router navigation
+- Custom 404 Error Page
+- Device status monitoring
+- Alert status display
+- Manual Monitoring On/Off control
+- Filter devices by:
+  - All
+  - Online
+  - Offline
+  - Alert
+
+## Tech Stack
+
+- React
+- Vite
+- React Router
+- React Bootstrap
+- Bootstrap 5
+- JavaScript
+- JSON

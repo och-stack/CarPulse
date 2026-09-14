@@ -3,7 +3,7 @@ import { Container, Card, Button, Navbar, Nav } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 import { AuthContext } from "../components/AuthContext";
-import devices from "../data/data.json";
+import devices from "../data/device.json";
 
 function Dashboard() {
     const [filter, setFilter] = useState("all");
