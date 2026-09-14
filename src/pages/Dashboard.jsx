@@ -1,44 +1,46 @@
-import { Container, Card, Row, Col, Badge } from "react-bootstrap";
-
 import devices from "../data/data.json";
 
-export default function Dashboard() {
+function Dashboard() {
     return (
-        <Container className="mt-5">
-            <h1>eGuard Dashboard</h1>
+        <div className="container mt-5">
+            <h1>Security Dashboard</h1>
 
-            <p>Vehicle security monitoring</p>
-
-            <Row>
+            <div className="row mt-4">
                 {devices.map((device) => (
-                    <Col md={4} className="mb-3" key={device.id}>
-                        <Card>
-                            <Card.Body>
-                                <img
-                                    src={device.image}
-                                    alt={device.name}
-                                    width="80"
-                                    height="80"
-                                />
+                    <div className="col-md-4 mb-4" key={device.name}>
+                        <div className="card h-100">
 
-                                <Card.Title>
+                            <img
+                                src={device.image}
+                                className="card-img-top"
+                                alt={device.name}
+                            />
+
+                            <div className="card-body">
+                                <h5 className="card-title">
                                     {device.name}
-                                </Card.Title>
+                                </h5>
 
-                                <Badge
-                                    bg={
-                                        device.status === "Online"
-                                            ? "success"
-                                            : "danger"
-                                    }
-                                >
-                                    {device.status}
-                                </Badge>
-                            </Card.Body>
-                        </Card>
-                    </Col>
+                                <p className="card-text">
+                                    Status: <strong>{device.status}</strong>
+                                </p>
+
+                                <p className="card-text">
+                                    Alert:{" "}
+                                    <strong>
+                                        {device.alert
+                                            ? "Alert detected"
+                                            : "No alert"}
+                                    </strong>
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
                 ))}
-            </Row>
-        </Container>
+            </div>
+        </div>
     );
 }
+
+export default Dashboard;

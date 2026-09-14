@@ -1,13 +1,15 @@
 import { useContext } from "react";
 import { Navigate } from "react-router-dom";
-import { AuthContext } from "./AuthContext.js";
+import { AuthContext } from "../AuthContext";
 
-export default function RequireAuth({ children }) {
-    const token = useContext(AuthContext).token;
+function RequireAuth({ children }) {
+    const { isLoggedIn } = useContext(AuthContext);
 
-    if (!token) {
+    if (!isLoggedIn) {
         return <Navigate to="/login" replace />;
     }
 
     return children;
 }
+
+export default RequireAuth;
