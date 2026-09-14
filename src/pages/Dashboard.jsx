@@ -7,12 +7,23 @@ import devices from "../data/data.json";
 
 function Dashboard() {
     const [filter, setFilter] = useState("all");
+    const [deviceStatus, setDeviceStatus] = useState(
+        devices.reduce((status, device) => ({
+            ...status,
+            [device.id]: device.status === "Online"
+        }), {})
+    );
+
     const { setIsLoggedIn } = useContext(AuthContext);
     const navigate = useNavigate();
 
     function handleLogout() {
         setIsLoggedIn(false);
         navigate("/login");
+    }
+
+    function toggleDevice(id) {
+        setDeviceStatus({ ...deviceStatus, [id]: !deviceStatus[id] });
     }
 
     const filteredDevices = devices.filter((device) => {
@@ -24,24 +35,19 @@ function Dashboard() {
     return (
         <div className="app-background">
             <div className="app-overlay">
+
                 {/* Navbar */}
                 <Navbar expand="lg" bg="dark" variant="dark" className="px-4">
                     <Container>
-                        <Navbar.Brand
-                            onClick={() => navigate("/dashboard")}
-                            className="brand"
-                        >
-                            <img src="/icarpulse.png" alt="iCarPulse" className="brand-logo" />
-                            iCarPulse
+                        <Navbar.Brand onClick={() => navigate("/dashboard")} className="brand">
+                            <img src="/icarpulse.png" alt="iCarPulse" className="brand-logo" /> iCarPulse
                         </Navbar.Brand>
 
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="ms-auto">
-                                <Button variant="outline-light" onClick={handleLogout}>
-                                    Logout
-                                </Button>
+                                <Button variant="outline-light" onClick={handleLogout}>Logout</Button>
                             </Nav>
                         </Navbar.Collapse>
                     </Container>
@@ -49,6 +55,7 @@ function Dashboard() {
 
                 {/* Dashboard Content */}
                 <Container className="dashboard-container">
+
                     {/* Header */}
                     <div className="dashboard-header">
                         <h1 className="white-text">iCarPulse</h1>
@@ -70,17 +77,12 @@ function Dashboard() {
                                 <Card.Img src={device.image} alt={device.name} className="device-image" />
 
                                 <Card.Body>
-                                    <Card.Title className="device-title">
-                                        {device.name}
-                                    </Card.Title>
+                                    <Card.Title className="device-title">{device.name}</Card.Title>
 
                                     {/* Status */}
                                     <p className="white-text">
                                         Status:{" "}
-                                        <Button
-                                            variant={device.status === "Online" ? "success" : "secondary"}
-                                            size="sm"
-                                        >
+                                        <Button variant={device.status === "Online" ? "success" : "secondary"} size="sm">
                                             {device.status}
                                         </Button>
                                     </p>
@@ -88,11 +90,20 @@ function Dashboard() {
                                     {/* Alert */}
                                     <p className="white-text">
                                         Alert:{" "}
-                                        <Button
-                                            variant={device.alert ? "danger" : "secondary"}
-                                            size="sm"
-                                        >
+                                        <Button variant={device.alert ? "danger" : "secondary"} size="sm">
                                             {device.alert ? "Alert detected" : "No alert"}
+                                        </Button>
+                                    </p>
+
+                                    {/* Monitoring */}
+                                    <p className="white-text">
+                                        Monitoring:{" "}
+                                        <Button
+                                            variant={deviceStatus[device.id] ? "success" : "secondary"}
+                                            size="sm"
+                                            onClick={() => toggleDevice(device.id)}
+                                        >
+                                            {deviceStatus[device.id] ? "On" : "Off"}
                                         </Button>
                                     </p>
                                 </Card.Body>
@@ -104,6 +115,7 @@ function Dashboard() {
                     {filteredDevices.length === 0 && (
                         <p className="no-results">No devices found for this filter.</p>
                     )}
+
                 </Container>
             </div>
         </div>
