@@ -3,30 +3,35 @@
         "id": 1,
         "name": "Front Camera",
         "image": "/carcam.png",
-        "status": "Online"
+        "status": "Online",
+        "alert": false
     },
     {
         "id": 2,
         "name": "Rear Camera",
         "image": "/carcam.png",
-        "status": "Online"
+        "status": "Online",
+        "alert": false
     },
     {
         "id": 3,
         "name": "Car Alarm",
         "image": "/caralarm.png",
-        "status": "Online"
+        "status": "Online",
+        "alert": false
     },
     {
         "id": 4,
         "name": "Central Lock",
         "image": "/centrallock.png",
-        "status": "Offline"
+        "status": "Online",
+        "alert": true
     },
     {
         "id": 5,
         "name": "TPMS",
         "image": "/tpms.png",
-        "status": "Online"
+        "status": "Offline",
+        "alert": false
     }
 ]

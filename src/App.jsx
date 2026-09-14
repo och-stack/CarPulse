@@ -1,6 +1,7 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-import { AuthProvider } from "./AuthContext";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { AuthProvider } from "./components/AuthContext";
 
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
@@ -12,20 +13,16 @@ function App() {
     <BrowserRouter>
       <AuthProvider>
         <Routes>
-
-          {/* First page */}
           <Route
             path="/"
             element={<Navigate to="/login" replace />}
           />
 
-          {/* Login */}
           <Route
             path="/login"
             element={<Login />}
           />
 
-          {/* Protected Dashboard */}
           <Route
             path="/dashboard"
             element={
@@ -35,12 +32,10 @@ function App() {
             }
           />
 
-          {/* Any unknown URL */}
           <Route
             path="*"
             element={<ErrorPage />}
           />
-
         </Routes>
       </AuthProvider>
     </BrowserRouter>
