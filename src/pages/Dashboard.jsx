@@ -121,12 +121,9 @@ function Dashboard() {
                         </Button>
                     </div>
 
-                    <div className="row gx-1 gy-1 justify-content-start">
+                    <div className="d-flex flex-wrap justify-content-start gap-2">
                         {filteredDevices.map(device => (
-                            <div
-                                key={device.id}
-                                className="col-12 col-md-6 col-lg-4 d-flex justify-content-center px-0"
-                            >
+                            <div key={device.id}>
                                 <Card className="device-card">
                                     <Card.Img
                                         src={device.image}
