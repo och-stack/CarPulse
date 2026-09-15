@@ -15,7 +15,7 @@ function Login() {
         e.preventDefault();
 
         const user = users.find(
-            (user) => user.email === email && user.password === password
+            (user) => user.username === email && user.password === password
         );
 
         if (user) {
