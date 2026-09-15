@@ -55,7 +55,6 @@ function Dashboard() {
                     <div className="dashboard-header">
                         <h1 className="white-text">iCarPulse</h1>
                         <p className="white-text">Monitor your vehicle at a glance</p>
-                        <p className="white-text">Role: {role}</p>
                     </div>
 
                     <div className="filter-buttons">
