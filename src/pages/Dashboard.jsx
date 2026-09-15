@@ -60,11 +60,11 @@ function Dashboard() {
                             className="brand"
                         >
                             <img
-                                src="/icarpulse.png"
-                                alt="iCarPulse"
+                                src="/carpulse.png"
+                                alt="CarPulse"
                                 className="brand-logo"
                             />
-                            iCarPulse
+                            CarPulse
                         </Navbar.Brand>
 
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -85,7 +85,7 @@ function Dashboard() {
                 <Container className="dashboard-container">
 
                     <div className="dashboard-header">
-                        <h1 className="white-text">iCarPulse</h1>
+                        <h1 className="white-text">CarPulse</h1>
                         <p className="white-text">
                             Monitor your vehicle at a glance
                         </p>

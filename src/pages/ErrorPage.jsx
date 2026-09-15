@@ -23,10 +23,10 @@ function ErrorPage() {
                 </Button>
             </Container>
 
-            {/* iCarPulse Image */}
+            {/* CarPulse Image */}
             <img
-                src="/icarpulse.png"
-                alt="iCarPulse"
+                src="/carpulse.png"
+                alt="CarPulse"
                 className="error-logo"
             />
         </div>
