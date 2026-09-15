@@ -2,7 +2,7 @@
 
 A smart vehicle monitoring dashboard built with React and React Bootstrap.
 
-iCarPulse allows users to quickly view their vehicle device status, alerts, and monitoring settings from one dashboard.
+CarPulse allows users to quickly view their vehicle device status, alerts, and monitoring settings from one dashboard.
 
 ![Login Page](./public/login.png)
 Image 1: This is the login page.
