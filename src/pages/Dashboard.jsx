@@ -1,21 +1,19 @@
 import { useContext, useState } from "react";
 import { Container, Card, Button, Navbar, Nav } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-
 import { AuthContext } from "../components/AuthContext";
 import devices from "../data/device.json";
 
 function Dashboard() {
     const [filter, setFilter] = useState("all");
-    const [deviceStatus, setDeviceStatus] = useState(
-        devices.reduce((status, device) => ({
-            ...status,
-            [device.id]: device.status === "Online"
-        }), {})
-    );
-
+    const [deviceStatus, setDeviceStatus] = useState(devices.reduce((status, device) => ({ ...status, [device.id]: device.status === "Online" }), {}));
     const { setIsLoggedIn } = useContext(AuthContext);
     const navigate = useNavigate();
+
+    const allCount = devices.length;
+    const onlineCount = devices.filter(device => device.status === "Online").length;
+    const offlineCount = devices.filter(device => device.status === "Offline").length;
+    const alertCount = devices.filter(device => device.alert === true).length;
 
     function handleLogout() {
         setIsLoggedIn(false);
@@ -26,7 +24,7 @@ function Dashboard() {
         setDeviceStatus({ ...deviceStatus, [id]: !deviceStatus[id] });
     }
 
-    const filteredDevices = devices.filter((device) => {
+    const filteredDevices = devices.filter(device => {
         if (filter === "all") return true;
         if (filter === "alert") return device.alert === true;
         return device.status.toLowerCase() === filter;
@@ -35,16 +33,12 @@ function Dashboard() {
     return (
         <div className="app-background">
             <div className="app-overlay">
-
-                {/* Navbar */}
                 <Navbar expand="lg" bg="dark" variant="dark" className="px-4">
                     <Container>
                         <Navbar.Brand onClick={() => navigate("/dashboard")} className="brand">
                             <img src="/icarpulse.png" alt="iCarPulse" className="brand-logo" /> iCarPulse
                         </Navbar.Brand>
-
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="ms-auto">
                                 <Button variant="outline-light" onClick={handleLogout}>Logout</Button>
@@ -53,33 +47,26 @@ function Dashboard() {
                     </Container>
                 </Navbar>
 
-                {/* Dashboard Content */}
                 <Container className="dashboard-container">
-
-                    {/* Header */}
                     <div className="dashboard-header">
                         <h1 className="white-text">iCarPulse</h1>
                         <p className="white-text">Monitor your vehicle at a glance</p>
                     </div>
 
-                    {/* Filter Buttons */}
                     <div className="filter-buttons">
-                        <Button variant="primary" onClick={() => setFilter("all")}>All</Button>
-                        <Button variant="success" onClick={() => setFilter("online")}>Online</Button>
-                        <Button variant="secondary" onClick={() => setFilter("offline")}>Offline</Button>
-                        <Button variant="danger" onClick={() => setFilter("alert")}>Alert</Button>
+                        <Button variant="primary" onClick={() => setFilter("all")}>All ({allCount})</Button>
+                        <Button variant="success" onClick={() => setFilter("online")}>Online ({onlineCount})</Button>
+                        <Button variant="secondary" onClick={() => setFilter("offline")}>Offline ({offlineCount})</Button>
+                        <Button variant="danger" onClick={() => setFilter("alert")}>Alert ({alertCount})</Button>
                     </div>
 
-                    {/* Device Cards */}
                     <div className="device-grid">
-                        {filteredDevices.map((device) => (
+                        {filteredDevices.map(device => (
                             <Card key={device.id} className="device-card">
                                 <Card.Img src={device.image} alt={device.name} className="device-image" />
-
                                 <Card.Body>
                                     <Card.Title className="device-title">{device.name}</Card.Title>
 
-                                    {/* Status */}
                                     <p className="white-text">
                                         Status:{" "}
                                         <Button variant={device.status === "Online" ? "success" : "secondary"} size="sm">
@@ -87,7 +74,6 @@ function Dashboard() {
                                         </Button>
                                     </p>
 
-                                    {/* Alert */}
                                     <p className="white-text">
                                         Alert:{" "}
                                         <Button variant={device.alert ? "danger" : "secondary"} size="sm">
@@ -95,14 +81,9 @@ function Dashboard() {
                                         </Button>
                                     </p>
 
-                                    {/* Monitoring */}
                                     <p className="white-text">
                                         Monitoring:{" "}
-                                        <Button
-                                            variant={deviceStatus[device.id] ? "success" : "secondary"}
-                                            size="sm"
-                                            onClick={() => toggleDevice(device.id)}
-                                        >
+                                        <Button variant={deviceStatus[device.id] ? "success" : "secondary"} size="sm" onClick={() => toggleDevice(device.id)}>
                                             {deviceStatus[device.id] ? "On" : "Off"}
                                         </Button>
                                     </p>
@@ -111,11 +92,9 @@ function Dashboard() {
                         ))}
                     </div>
 
-                    {/* No Results */}
                     {filteredDevices.length === 0 && (
                         <p className="no-results">No devices found for this filter.</p>
                     )}
-
                 </Container>
             </div>
         </div>
