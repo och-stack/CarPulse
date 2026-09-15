@@ -125,7 +125,7 @@ function Dashboard() {
                         {filteredDevices.map(device => (
                             <div
                                 key={device.id}
-                                className="col-12 col-md-6 col-lg-4 d-flex justify-content-center"
+                                className="col-12 col-md-6 col-lg-4 d-flex justify-content-center px-0"
                             >
                                 <Card className="device-card">
                                     <Card.Img
