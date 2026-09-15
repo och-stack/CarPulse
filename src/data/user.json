@@ -1,12 +1,12 @@
 [
     {
-        "username": "admin",
-        "password": "1234",
+        "username": "john@mail.com",
+        "password": "admin",
         "role": "admin"
     },
     {
-        "username": "guest",
-        "password": "1234",
+        "username": "guest@mail.com",
+        "password": "guest",
         "role": "guest"
     }
 ]
