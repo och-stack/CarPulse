@@ -64,7 +64,7 @@ function Dashboard() {
                         <Button variant="danger" onClick={() => setFilter("alert")}>Alert ({alertCount})</Button>
                     </div>
 
-                    <div className="row g-4">
+                    <div className="device-grid">
                         {filteredDevices.map(device => (
                             <Card key={device.id} className="device-card">
                                 <Card.Img src={device.image} alt={device.name} className="device-image" />
