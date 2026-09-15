@@ -97,12 +97,6 @@ function Dashboard() {
                                             {deviceStatus[device.id] ? "On" : "Off"}
                                         </Button>
                                     </p>
-
-                                    {role === "admin" && (
-                                        <Button variant="warning" size="sm">
-                                            Manage Vehicle
-                                        </Button>
-                                    )}
                                 </Card.Body>
                             </Card>
                         ))}
