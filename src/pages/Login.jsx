@@ -8,7 +8,7 @@ function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const { setIsLoggedIn } = useContext(AuthContext);
+    const { setIsLoggedIn, setRole } = useContext(AuthContext);
     const navigate = useNavigate();
 
     function handleLogin(e) {
@@ -20,6 +20,7 @@ function Login() {
 
         if (user) {
             setIsLoggedIn(true);
+            setRole(user.role);
             navigate("/dashboard");
         } else {
             setIsLoggedIn(false);
@@ -30,19 +31,16 @@ function Login() {
     return (
         <div className="app-background">
             <div className="app-overlay login-overlay">
-                {/* Login Circle */}
                 <div className="login-circle shadow">
-                    {/* Content */}
                     <div className="login-content">
-                        {/* Title */}
+
                         <div className="login-header">
                             <h1 className="white-text">iCarPulse</h1>
                             <p className="white-text">Smart Vehicle Monitoring</p>
                         </div>
 
-                        {/* Login Form */}
                         <form onSubmit={handleLogin}>
-                            {/* Email */}
+
                             <div className="login-field">
                                 <label className="login-label">Email</label>
                                 <input
@@ -55,7 +53,6 @@ function Login() {
                                 />
                             </div>
 
-                            {/* Password */}
                             <div className="login-field password-field">
                                 <label className="login-label">Password</label>
                                 <input
@@ -68,15 +65,17 @@ function Login() {
                                 />
                             </div>
 
-                            {/* Login Button */}
-                            <button type="submit" className="btn btn-primary login-button">
+                            <button
+                                type="submit"
+                                className="btn btn-primary login-button"
+                            >
                                 Login
                             </button>
 
-                            {/* Login Credential Hint */}
                             <p className="login-hint">
                                 Demo login: john@mail.com / admin
                             </p>
+
                         </form>
                     </div>
                 </div>

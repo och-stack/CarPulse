@@ -7,7 +7,7 @@ import devices from "../data/device.json";
 function Dashboard() {
     const [filter, setFilter] = useState("all");
     const [deviceStatus, setDeviceStatus] = useState(devices.reduce((status, device) => ({ ...status, [device.id]: device.status === "Online" }), {}));
-    const { setIsLoggedIn } = useContext(AuthContext);
+    const { setIsLoggedIn, role } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const allCount = devices.length;
@@ -33,12 +33,15 @@ function Dashboard() {
     return (
         <div className="app-background">
             <div className="app-overlay">
+
                 <Navbar expand="lg" bg="dark" variant="dark" className="px-4">
                     <Container>
                         <Navbar.Brand onClick={() => navigate("/dashboard")} className="brand">
                             <img src="/icarpulse.png" alt="iCarPulse" className="brand-logo" /> iCarPulse
                         </Navbar.Brand>
+
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
+
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="ms-auto">
                                 <Button variant="outline-light" onClick={handleLogout}>Logout</Button>
@@ -48,9 +51,11 @@ function Dashboard() {
                 </Navbar>
 
                 <Container className="dashboard-container">
+
                     <div className="dashboard-header">
                         <h1 className="white-text">iCarPulse</h1>
                         <p className="white-text">Monitor your vehicle at a glance</p>
+                        <p className="white-text">Role: {role}</p>
                     </div>
 
                     <div className="filter-buttons">
@@ -64,6 +69,7 @@ function Dashboard() {
                         {filteredDevices.map(device => (
                             <Card key={device.id} className="device-card">
                                 <Card.Img src={device.image} alt={device.name} className="device-image" />
+
                                 <Card.Body>
                                     <Card.Title className="device-title">{device.name}</Card.Title>
 
@@ -83,10 +89,21 @@ function Dashboard() {
 
                                     <p className="white-text">
                                         Monitoring:{" "}
-                                        <Button variant={deviceStatus[device.id] ? "success" : "secondary"} size="sm" onClick={() => toggleDevice(device.id)}>
+                                        <Button
+                                            variant={deviceStatus[device.id] ? "success" : "secondary"}
+                                            size="sm"
+                                            disabled={role !== "admin"}
+                                            onClick={() => toggleDevice(device.id)}
+                                        >
                                             {deviceStatus[device.id] ? "On" : "Off"}
                                         </Button>
                                     </p>
+
+                                    {role === "admin" && (
+                                        <Button variant="warning" size="sm">
+                                            Manage Vehicle
+                                        </Button>
+                                    )}
                                 </Card.Body>
                             </Card>
                         ))}
@@ -95,6 +112,7 @@ function Dashboard() {
                     {filteredDevices.length === 0 && (
                         <p className="no-results">No devices found for this filter.</p>
                     )}
+
                 </Container>
             </div>
         </div>
