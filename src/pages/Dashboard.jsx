@@ -57,7 +57,7 @@ function Dashboard() {
                         <p className="white-text">Monitor your vehicle at a glance</p>
                     </div>
 
-                    <div className="d-flex flex-wrap gap-2 mb-4">
+                    <div className="filter-buttons">
                         <Button variant="primary" onClick={() => setFilter("all")}>All ({allCount})</Button>
                         <Button variant="success" onClick={() => setFilter("online")}>Online ({onlineCount})</Button>
                         <Button variant="secondary" onClick={() => setFilter("offline")}>Offline ({offlineCount})</Button>
@@ -66,7 +66,7 @@ function Dashboard() {
 
                     <div className="row g-4">
                         {filteredDevices.map(device => (
-                            <Card key={device.id} className="col-12 col-md-6 col-lg-4">
+                            <Card key={device.id} className="device-card">
                                 <Card.Img src={device.image} alt={device.name} className="device-image" />
 
                                 <Card.Body>

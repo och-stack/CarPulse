@@ -55,6 +55,21 @@
     margin-bottom: 24px;
 }
 
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+}
+
+.device-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 260px);
+    gap: 24px;
+    justify-content: center;
+}
+
 .device-card {
     width: 260px;
     min-height: 280px;
