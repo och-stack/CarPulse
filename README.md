@@ -4,13 +4,13 @@ A smart vehicle monitoring dashboard built with React and React Bootstrap.
 
 CarPulse allows users to quickly view their vehicle device status, alerts, and monitoring settings from one dashboard.
 
-![Login Page](./public/login.png)
+![Login](./public/login.png)
 Image 1: Login page.
 
-![Dashboard Page](./public/dashboard.png)
+![Dashboard](./public/dashboard.png)
 Image 2: Dashboard page.
 
-![Error Page](./public/errorpage.png)
+![Error](./public/errorpage.png)
 Image 3: Custom 404 Error Page.
 
 ## Features
