@@ -35,7 +35,7 @@ function Login() {
                     <div className="login-content">
 
                         <div className="login-header">
-                            <h1 className="white-text">iCarPulse</h1>
+                            <h1 className="white-text">CarPulse</h1>
                             <p className="white-text">Smart Vehicle Monitoring</p>
                         </div>
 
