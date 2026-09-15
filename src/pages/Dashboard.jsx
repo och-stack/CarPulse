@@ -121,7 +121,7 @@ function Dashboard() {
                         </Button>
                     </div>
 
-                    <div className="row g-1 justify-content-start">
+                    <div className="row gx-1 gy-1 justify-content-start">
                         {filteredDevices.map(device => (
                             <div
                                 key={device.id}
