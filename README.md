@@ -1,4 +1,4 @@
-# iCarPulse
+# CarPulse
 
 A smart vehicle monitoring dashboard built with React and React Bootstrap.
 
