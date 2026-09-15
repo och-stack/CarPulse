@@ -121,7 +121,7 @@ function Dashboard() {
                         </Button>
                     </div>
 
-                    <div className="d-flex flex-wrap justify-content-start gap-2">
+                    <div className="d-flex flex-wrap justify-content-center gap-2">
                         {filteredDevices.map(device => (
                             <div key={device.id}>
                                 <Card className="device-card">
